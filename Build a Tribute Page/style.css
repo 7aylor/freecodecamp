@@ -1,0 +1,43 @@
+body {
+	background: #00334d;
+	color: white;
+}
+
+.jumbotron{
+	background-image: url("http://www.ing.iac.es/PR/press/81_ene12_thor.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+.jumbotron h1 {
+	color: white;
+}
+
+#main-img{
+	border-radius: 10px;
+}
+	
+p{
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.vid{
+	display: block;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+.well{
+	width: 80%;
+	margin: 0 auto;
+	border-color: #0077b3;
+	background-color: #004466;
+	margin-bottom: 30px;
+}
+
+blockquote p{
+	font-style: italic;
+	font-size: 1.2em;
+	font-family: georgia, serif;
+}
