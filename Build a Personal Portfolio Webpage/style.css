@@ -1,5 +1,6 @@
 body {
-    background-color: #15093B;
+    //background-color: #15093B;
+    background-color: indigo;
 }
 
 .main{
@@ -35,4 +36,21 @@ h1{
     background-color: gray;
     margin-top: -5px;
     height: 30px;
+}
+
+.col-sm-5{
+    text-align: center;
+}
+
+h2{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+h2:hover{
+    color: rebeccapurple;
 }
