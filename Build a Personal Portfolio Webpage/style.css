@@ -1,5 +1,4 @@
 body {
-    //background-color: #15093B;
     background-color: indigo;
 }
 
@@ -34,8 +33,7 @@ h1{
 
 .footer{
     background-color: gray;
-    margin-top: -5px;
-    height: 30px;
+    height: 50px;
 }
 
 .col-sm-5{
@@ -53,4 +51,21 @@ a:hover {
 
 h2:hover{
     color: rebeccapurple;
+}
+
+li{
+    list-style: none;
+}
+
+#contact{
+    margin-bottom: 15px;
+}
+
+#logos{
+    text-align: center;
+    margin-top: 5px;
+}
+
+#logos img{
+    margin-right: 10px;
 }
