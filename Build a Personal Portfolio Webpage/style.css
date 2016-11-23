@@ -2,6 +2,10 @@ body {
     background-color: indigo;
 }
 
+.navbar-inverse .navbar-brand{
+    color: white;
+}
+
 #description{
     font-family: monospace;
     text-align: right;
@@ -16,7 +20,7 @@ body {
 .about{
     margin-top: 50px;
     padding-top: 20px;
-    padding-bottom: 70px;
+    padding-bottom: 30px;
 }
 
 .navbar {
@@ -54,8 +58,12 @@ a:hover {
     text-decoration: none;
 }
 
-h2:hover{
+#portfolio h2:hover{
     color: rebeccapurple;
+}
+
+#portfolio{
+    padding-bottom: 75px;
 }
 
 li{
@@ -63,7 +71,11 @@ li{
 }
 
 #contact{
-    margin-bottom: 15px;
+    padding-bottom: 45px;
+}
+
+#contact h2{
+    font-family: monospace;
 }
 
 #logos{
@@ -76,14 +88,33 @@ li{
     margin-right: 10px;
 }
 
-#twitter img:last-child{display:none}
-#twitter:hover img:first-child{display:none}
-#twitter:hover img:last-child{display:inline-block}
+#twitter img:last-child{
+    display:none
+}
 
-#github img:last-child{display:none}
-#github:hover img:first-child{display:none}
-#github:hover img:last-child{display:inline-block}
+#twitter:hover img:first-child{
+    display:none
+}
+#twitter:hover img:last-child{
+    display:inline-block
+}
 
-#linkedin img:last-child{display:none}
-#linkedin:hover img:first-child{display:none}
-#linkedin:hover img:last-child{display:inline-block}
+#github img:last-child{
+    display:none
+}
+#github:hover img:first-child{
+    display:none
+}
+#github:hover img:last-child{
+    display:inline-block
+}
+
+#linkedin img:last-child{
+    display:none
+}
+#linkedin:hover img:first-child{
+    display:none
+}
+#linkedin:hover img:last-child{
+    display:inline-block
+}
