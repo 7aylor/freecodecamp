@@ -4,7 +4,21 @@ body{
 }
 .well{
   border-color: #440026;
+  border-radius: 10px;
   background-color: #CD88AF;
   margin-top:100px;
   text-align: center;
+  color: #602C49;
+}
+
+button{
+  background-color: #602C49;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
