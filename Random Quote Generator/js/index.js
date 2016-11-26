@@ -32,9 +32,30 @@ var quotes = [
 "\"When a person can no longer laugh at himself, it is time for others to laugh at him.\" — Thomas Szasz"
 ];
 
+var colors = [
+  "#AA3939",
+  "#AA6C39",
+  "#226666",
+  "#2D882D",
+  "#403075",
+  "#582A72",
+  "#AAAA39",
+  "#AA9739",
+  "#338A2E",
+  "#226764",
+  "#AA6B39",
+  "#A8383B"
+]
+
 $(document).ready(function(){
   $("button").on("click", function(){
-    var rand = Math.floor(Math.random() * quotes.length);
-    $("#quote").text(quotes[rand]);
+    $("#quote").fadeOut(function(){
+      var rand = Math.floor(Math.random() * quotes.length);
+      var color = Math.floor(Math.random() * colors.length);
+      $("#quote").text(quotes[rand]);
+      $("body").animate({background-color: colors[color];}, 1000);
+      $(".well").css("color", colors[color]);
+      $(".button").css("background-color", colors[color]);
+    }).fadeIn("slow", "linear");
   });
 });
