@@ -1,0 +1,125 @@
+body {
+  background-color: indigo;
+}
+
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
+#description {
+  font-family: monospace;
+  text-align: right;
+}
+
+.main {
+  background-color: white;
+  border: none;
+  margin-top: -5px;
+}
+
+.about {
+  margin-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.navbar {
+  background-color: #000000;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+#top-img {
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+.footer {
+  background-color: gray;
+  height: 50px;
+}
+
+.col-sm-5 {
+  text-align: center;
+}
+
+h2 {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#portfolio h2:hover {
+  color: rebeccapurple;
+}
+
+#portfolio {
+  padding-bottom: 75px;
+}
+
+li {
+  list-style: none;
+}
+
+#contact {
+  padding-bottom: 45px;
+}
+
+#contact h2 {
+  font-family: monospace;
+}
+
+#logos {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#logos div {
+  display: inline;
+  margin-right: 10px;
+}
+
+#twitter img:last-child {
+  display: none
+}
+
+#twitter:hover img:first-child {
+  display: none
+}
+
+#twitter:hover img:last-child {
+  display: inline-block
+}
+
+#github img:last-child {
+  display: none
+}
+
+#github:hover img:first-child {
+  display: none
+}
+
+#github:hover img:last-child {
+  display: inline-block
+}
+
+#linkedin img:last-child {
+  display: none
+}
+
+#linkedin:hover img:first-child {
+  display: none
+}
+
+#linkedin:hover img:last-child {
+  display: inline-block
+}
