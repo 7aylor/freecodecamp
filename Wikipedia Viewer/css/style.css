@@ -1,13 +1,26 @@
 body{
   text-align: center;
-  background-color: #336699;
-  color: #a3a3c2;
+  background-color: darkslategray;
+  color: steelblue;
 }
 h1{
   font-size: 3em;
   text-shadow: 2px 2px black;
 }
-form input{
-  background-color: #a3a3c2;
+#searchbox, .btn{
+  background-color: skyblue;
+  border: 2px steelblue solid;
   border-radius: 5px;
+  margin: 2px;
+  color: black;
+}
+
+a{
+  font-family: calibri;
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+a:hover{
+  color: skyblue;
 }
