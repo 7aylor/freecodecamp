@@ -1,0 +1,13 @@
+body{
+  text-align: center;
+  background-color: #336699;
+  color: #a3a3c2;
+}
+h1{
+  font-size: 3em;
+  text-shadow: 2px 2px black;
+}
+form input{
+  background-color: #a3a3c2;
+  border-radius: 5px;
+}
