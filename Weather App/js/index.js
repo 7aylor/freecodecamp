@@ -14,9 +14,44 @@ $(document).ready(function() {
 
     //then get the JSON and parse it to use in the webpage
     $.getJSON(url, function(wd) {
-      var fahr = wd.main.temp;
+      var fahr = Math.round(wd.main.temp, 2);
       var cels = Math.round((fahr - 32) * (5/9), 2);
       icon += wd.weather[0].icon + ".png";
+      var description = wd.weather[0].description;
+      description = description.charAt(0).toUpperCase() + description.slice(1);
+      var weatherType = wd.weather[0].main;
+      
+      switch (weatherType){
+        case "Thunderstorm":
+          $('body').css('background-image','url(https://www.pexels.com/photo/white-snow-on-twig-29845/)');
+          break;
+        case "Drizzle":
+        case "Rain":
+          $('body').css('background-image','url(https://static.pexels.com/photos/69927/rain-floor-water-wet-69927.jpeg)');
+          break;
+        case "Snow":
+          $('body').css('background-image','url(https://static.pexels.com/photos/6672/snow-forest-trees-winter.jpeg)');
+          $('body').css('color','black');
+          break;
+        case "Snow":
+          $('body').css('background-image','url(https://static.pexels.com/photos/6672/snow-forest-trees-winter.jpeg)');
+          $('body').css('color','black');
+          break;
+        case "Clear":
+          $('body').css('background-image','url(https://static.pexels.com/photos/28215/pexels-photo.jpg)');
+          $('body').css('color','black');
+          break;
+        case "Clear":
+          $('body').css('background-image','url(https://static.pexels.com/photos/28215/pexels-photo.jpg)');
+          $('body').css('color','black');
+          break;
+        case "Clouds":
+          $('body').css('background-image','url(https://static.pexels.com/photos/3888/landscape-seascape-dark-clouds.jpg)');
+          break;
+        default:
+        
+      }
+      
       $('#city').html(wd.name + ', ' + wd.sys.country);
       $('#temp').html(fahr + "&deg " + units);
       $('#btn').html("Celsius");
@@ -35,7 +70,7 @@ $(document).ready(function() {
         
       });
       
-      $('#type').html(wd.weather[0].main);
+      $('#type').html(description);
       $('#icon').html('<img src=' + icon + ' />');
     });
   });
