@@ -1,6 +1,10 @@
 body{
   font-family: verdana;
   background-color: #FFAAAA;
+  text-align: center;
+}
+h1{
+  font-size: 2.5em;
 }
 #calc-body{
   margin: auto;
@@ -39,18 +43,11 @@ body{
   border-radius: 5px;
   height: 30px;
   width: 30px;
-  text-align: center;
   box-shadow: 1px 1px #445444, 1px 4px 0 #445444;
   margin-right: 5px;
   color: white;
   font-size: 1.2em;
   padding: 5px 3px 0 3px;
-}
-.clear{
-  background-color: #D1424E;
-}
-.number{
-  background-color: #5F5F5F;
 }
 #row2{
   top: 110px;
@@ -76,4 +73,10 @@ body{
 }
 #zero{
   width: 76px;
+}
+.clear{
+  background-color: #D1424E;
+}
+.number{
+  background-color: #5F5F5F;
 }
