@@ -1,14 +1,19 @@
 body{
-  
+  font-family: verdana;
+  background-color: #FFAAAA;
 }
 #calc-body{
   margin: auto;
   background: linear-gradient(#7F8C72, #728C8C);
-  height: 300px;
-  width: 200px;
+  height: 290px;
+  width: 202px;
   border-radius: 9%;
   box-shadow: 2px 2px 15px #888888, 3px 6px 3px #445444;
   position: relative;
+}
+.container{
+  left: 15px;
+  position: absolute;
 }
 #screen{
   text-align: right;
@@ -18,7 +23,6 @@ body{
   padding: 10px;
   position: absolute;
   top: 10px;
-  left: 15px;
   background-color: #F4F48F;
   height: 30px;
   width: 155px;
@@ -27,18 +31,49 @@ body{
 }
 #row1{
   top: 68px;
-  left: 15px;
   position: absolute;
 }
-.clear{
-  background-color: #D1424E;
+.button{
+  background-color: #353535;
   display: inline-block;
   border-radius: 5px;
   height: 30px;
   width: 30px;
-  padding: 3px;
   text-align: center;
-  box-shadow: 1px 1px dimgray;
+  box-shadow: 1px 1px #445444, 1px 4px 0 #445444;
   margin-right: 5px;
   color: white;
+  font-size: 1.2em;
+  padding: 5px 3px 0 3px;
+}
+.clear{
+  background-color: #D1424E;
+}
+.number{
+  background-color: #5F5F5F;
+}
+#row2{
+  top: 110px;
+  position: absolute;
+}
+#row3{
+  top: 152px;
+  position: absolute;
+}
+#row4{
+  top: 194px;
+  position: absolute;
+}
+#row5{
+  top: 236px;
+  position: absolute;
+}
+#equals{
+  margin-top: 194px;
+  margin-left: 140px;
+  padding-top: 22px;
+  padding-bottom: 26px;
+}
+#zero{
+  width: 76px;
 }
