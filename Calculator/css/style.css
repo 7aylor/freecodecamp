@@ -38,6 +38,7 @@ h1{
   position: absolute;
 }
 .button{
+  cursor: pointer;
   background-color: #353535;
   display: inline-block;
   border-radius: 5px;
