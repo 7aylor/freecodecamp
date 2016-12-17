@@ -24,3 +24,17 @@ a{
 a:hover{
   color: skyblue;
 }
+
+ul {
+  list-style-type: none;
+}
+
+li{
+  text-align: left;
+  background-color: skyblue;
+  border: 1px black solid;
+  border-radius: 2px;
+  color: black;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
