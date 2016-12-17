@@ -12,16 +12,18 @@
 </head>
 
 <body>
-  <h1>Wikipedia Viewer</h1>
+  <h1 id="title">Wikipedia Viewer</h1>
 
-<h2><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random Article</a></h2>
+<h2><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" id="random">Random Article</a></h2>
 
 <form>
-  <input type="search" id="searchbox"></input>
-  <input type="button" value="Search" class="btn" id="searchbtn"></input>
+  <input type="search" id="searchbox" placeholder="Search For Article"></input>
+  </input>
 </form>
 
 <div id="results"><ul></ul></div>
+
+<div id="footer">Created by Taylor Buchheit, 2016</div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 
     <script src="js/index.js"></script>
