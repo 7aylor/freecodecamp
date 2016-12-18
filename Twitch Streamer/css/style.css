@@ -1,0 +1,46 @@
+body {
+  background-color: #6441A5;
+  font-family: Helvetica, sans-serif;
+}
+
+#container {
+  margin: 0 auto;
+  width: 35em;
+  background-color: white;
+}
+
+#container-head {
+  height: 5em;
+  background-color: #30087A;
+}
+
+#title {
+  color: white;
+  text-align: center;
+  font-size: 3em;
+  padding-top: .3em;
+}
+
+#toggle {
+  background-color: #A990D8;
+  height: 2em;
+  border: 2px black solid;
+}
+
+.list-item {
+  clear: both;
+  border: 2px black solid;
+  border-top: none;
+  height: 5em;
+}
+
+.streamer-img {
+  margin: 1em;
+  border-radius: 100%;
+  height: 50px;
+}
+
+.list-item .name {
+  margin-top: -3em;
+  margin-left: 5em;
+}
