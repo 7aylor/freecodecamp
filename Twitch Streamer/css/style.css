@@ -5,7 +5,7 @@ body {
 
 #container {
   margin: 0 auto;
-  width: 35em;
+  width: 25em;
   background-color: white;
 }
 
@@ -34,6 +34,15 @@ body {
   height: 5em;
 }
 
+a{
+  text-decoration: none;
+  color: #30087A;
+}
+
+a:hover{
+  color: #6441A5;
+}
+
 .streamer-img {
   margin: 1em;
   border-radius: 100%;
@@ -43,4 +52,17 @@ body {
 .list-item .name {
   margin-top: -3em;
   margin-left: 5em;
+}
+
+.status{
+  margin-top: -2.2em;
+  margin-left: 15em;
+}
+
+.online{
+  color: green;
+}
+
+.offline{
+  color: red;
 }
