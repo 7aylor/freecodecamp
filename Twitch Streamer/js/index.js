@@ -5,7 +5,7 @@ var allChannels = [
   "freecodecamp",
   "qazitv",
   "esl_csgo",
-  "pro_dota2_tv"
+  "pro_dota2_tv",
 ];
 
 var onlineChannels = [];
@@ -33,16 +33,17 @@ $(document).ready(function() {
   $("#toggle-all").click(function(){
     $("#container-body").empty();
     $("#toggle-all").css("color", "white");
-    $("#toggle-online").css("color", "black");
-    $("#toggle-offline").css("color", "black");
+    $("#toggle-online").css("color", "green");
+    $("#toggle-offline").css("color", "red");
     
     //loop through all channels, then add the html to container-body
-    allChannels.forEach(function(channel){
-      var thisChannelUrl = channelUrl + channel + callBackString;
-      var thisStreamUrl = streamUrl + channel + callBackString;
+    allChannels.forEach(function(ourChannel){
+      var thisChannelUrl = channelUrl + ourChannel + callBackString;
+      var thisStreamUrl = streamUrl + ourChannel + callBackString;
       $.getJSON(thisStreamUrl, function(stream) {
         if (stream.stream !== null) {
-          addHtml(" online\"> Online", thisChannelUrl, "online");
+          var streamName = stream.stream.channel.status;
+          addHtml(" online\">" + streamName, thisChannelUrl, "online");
         } 
         else {
           addHtml(" offline\"> Offine", thisChannelUrl, "offline");
@@ -56,14 +57,15 @@ $(document).ready(function() {
     $("#container-body").empty();
     $("#toggle-all").css("color", "black");
     $("#toggle-online").css("color", "white");
-    $("#toggle-offline").css("color", "black");
+    $("#toggle-offline").css("color", "red");
     
     //loop through online channels, then add the html to container-body
-    onlineChannels.forEach(function(channel){
-      var thisChannelUrl = channelUrl + channel + callBackString;
-      var thisStreamUrl = streamUrl + channel + callBackString;
+    onlineChannels.forEach(function(ourChannel){
+      var thisChannelUrl = channelUrl + ourChannel + callBackString;
+      var thisStreamUrl = streamUrl + ourChannel + callBackString;
       $.getJSON(thisStreamUrl, function(stream) {
-        addHtml(" online\"> Online", thisChannelUrl, "online");
+        var streamName = stream.stream.channel.status;
+        addHtml(" online\">" + streamName, thisChannelUrl, "online");
       });
     });
   });
@@ -71,7 +73,7 @@ $(document).ready(function() {
   $("#toggle-offline").click(function(){
     $("#container-body").empty();
     $("#toggle-all").css("color", "black");
-    $("#toggle-online").css("color", "black");
+    $("#toggle-online").css("color", "green");
     $("#toggle-offline").css("color", "white");
     
     //loop through offline channels, then add the html to container-body
@@ -79,7 +81,7 @@ $(document).ready(function() {
       var thisChannelUrl = channelUrl + channel + callBackString;
       var thisStreamUrl = streamUrl + channel + callBackString;
       $.getJSON(thisStreamUrl, function(stream) {
-        addHtml(" offline\"> Offine", thisChannelUrl, "offline");
+        addHtml(" offline\"> Currently Offine", thisChannelUrl, "offline");
       });
     });
   });
