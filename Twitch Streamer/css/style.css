@@ -27,6 +27,40 @@ body {
   border: 2px black solid;
 }
 
+ul{
+  padding: 0;
+  margin-top: 0.35em;
+  margin-left: em;
+}
+
+li{
+  color: black;
+  font-size: 1.1em;
+  font-weight: bold;
+  display: inline;
+  list-style: none;
+  margin-left: 3.3em;
+  margin-right: .7em;
+}
+
+li:hover{
+  cursor: pointer;
+  color: white;
+}
+/*
+#toggle-all {
+  margin-left: 1.8em;
+}
+
+#toggle-online {
+  margin-left: 2.15em;
+}
+
+#toggle-offline {
+  float: right;
+  margin-right: 3.65em;
+}
+*/
 .list-item {
   clear: both;
   border: 2px black solid;
