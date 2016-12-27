@@ -4,8 +4,9 @@ $(document).ready(function(){
   var screenNum = "";
   
   //numbers used for arithmetic
-  var num1 = 0;
-  var num2 = 0;
+  var num1 = "";
+  var num2 = "";
+  var result = "";
   
   //store the operator being used
   var operator = "";
@@ -52,8 +53,8 @@ $(document).ready(function(){
   
   //click all clear functionality
   $("#ac").click(function(){
-    num1 = 0;
-    num2 = 0;
+    num1 = "";
+    num2 = "";
     screenNum = "";
     operator = "";
     $("#screen").text(0);
@@ -63,19 +64,20 @@ $(document).ready(function(){
   //click clear entry functionality
   $("#ce").click(function(){
     if(operator !== ""){
-      num2 = 0;
+      num2 = "";
       screenNum = "";
     }
     else{
-      num1 = 0;
-      num2 = 0;
+      num1 = "";
+      num2 = "";
       screenNum = "";
       operator = "";
     }
     $("#screen").text(0);
   });
-
-
+  
+  $("#equals").click(clickEquals);
+  
   //when a number button is clicked, display it, or print error if screenNum is too long
   function clickNum(selector, value){
     $(selector).click(function(){
@@ -87,13 +89,46 @@ $(document).ready(function(){
   //operator click functionality
   function clickOperator(selector, value){
     $(selector).click(function(){
-      operator = value;
-      num1 = Number(screenNum);
-      $("#small-screen").text(screenNum + " " + operator);
-      screenNum = "";
+      if(num2 === ""){
+        operator = value;
+        num1 = Number(screenNum);
+        $("#small-screen").text(screenNum + " " + operator);
+        screenNum = "";  
+      }
+      else{
+        operator = value;
+        num2 = Number(screenNum);
+        clickEquals();
+        $("#small-screen").text(result + " " + operator);
+        num1 = result;
+        num2 = "";
+        screenNum = "";
+      }
     });
   }
+
+  //when equals is clicked
+  var clickEquals = function(){
+    console.log(operator);
+    switch(operator){
+      case decodeURI("%C3%B7"):
+        result = num1 / num2;
+        break;
+      case decodeURI("%C3%97"):
+        result = num1 * num2;
+        break;
+      case "-":
+        result = num1 - num2;
+        break;
+      case "+":
+        result = num1 + num2;
+        break;
+    }
+    console.log(result);
+    $("#screen").text(result);
+  }
   
+
   //check the length of screenNum, print error if its too long
   function checkLength(){
     if(screenNum.length > 7){
