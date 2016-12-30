@@ -92,14 +92,21 @@ $(document).ready(function(){
       if(num2 === ""){
         operator = value;
         num1 = Number(screenNum);
-        $("#small-screen").text(screenNum + " " + operator);
+        if(screenNum === ""){
+          screenNum = "0 " + operator;
+        }
+        else{
+          screenNum = screenNum + " " + operator; 
+        }
+        $("#small-screen").text(screenNum);
         screenNum = "";  
       }
       else{
         operator = value;
         num2 = Number(screenNum);
-        clickEquals();
-        $("#small-screen").text(result + " " + operator);
+        //clickEquals();
+        screenNum = result + " " + operator;
+        $("#small-screen").text(screenNum);
         num1 = result;
         num2 = "";
         screenNum = "";
