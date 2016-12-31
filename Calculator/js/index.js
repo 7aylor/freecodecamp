@@ -11,6 +11,15 @@ $(document).ready(function(){
   //store the operator being used
   var operator = "";
   
+  //function to clear number values
+  function clearVars(){
+    num1 = "";
+    num2 = "";
+    result = "";
+    screenNum = "";
+    operator = "";
+  }
+  
   //button click functionality for numbers
   clickNum(  "#one", "1");
   clickNum(  "#two", "2");
@@ -26,6 +35,8 @@ $(document).ready(function(){
   clickOperator("#times", decodeURI("%C3%97"));
   clickOperator("#minus", "-");
   clickOperator("#plus", "+");
+  
+  clickEquals();
   
   //change colors of buttons on press
   changeButtonColorOnPress(".number", "#353535", "#5F5F5F");
@@ -53,11 +64,8 @@ $(document).ready(function(){
   
   //click all clear functionality
   $("#ac").click(function(){
-    num1 = "";
-    num2 = "";
-    screenNum = "";
-    operator = "";
-    $("#screen").text(0);
+    clearVars();
+    $("#screen").text("0");
     $("#small-screen").text("");
   });
   
@@ -68,18 +76,14 @@ $(document).ready(function(){
       screenNum = "";
     }
     else{
-      num1 = "";
-      num2 = "";
-      screenNum = "";
-      operator = "";
+      clearVars();
     }
-    $("#screen").text(0);
+    $("#screen").text("0");
   });
-  
-  $("#equals").click(clickEquals);
   
   //when a number button is clicked, display it, or print error if screenNum is too long
   function clickNum(selector, value){
+    console.log("Number clicked");
     $(selector).click(function(){
       screenNum += value;
       checkLength();
@@ -89,7 +93,8 @@ $(document).ready(function(){
   //operator click functionality
   function clickOperator(selector, value){
     $(selector).click(function(){
-      if(num2 === ""){
+      console.log("Operator clicked");
+      if(num2 === "" && num1 === ""){
         operator = value;
         num1 = Number(screenNum);
         if(screenNum === ""){
@@ -104,7 +109,7 @@ $(document).ready(function(){
       else{
         operator = value;
         num2 = Number(screenNum);
-        //clickEquals();
+        clickEquals();
         screenNum = result + " " + operator;
         $("#small-screen").text(screenNum);
         num1 = result;
@@ -115,24 +120,32 @@ $(document).ready(function(){
   }
 
   //when equals is clicked
-  var clickEquals = function(){
-    console.log(operator);
-    switch(operator){
-      case decodeURI("%C3%B7"):
+  function clickEquals(){
+    
+    $("#equals").click(function(){
+      if(num2 === ""){
+        num2 = Number(screenNum);
+      }
+      console.log(operator);
+      console.log("Num1: " + num1);
+      console.log("Num2: " + num2);
+      if(operator === decodeURI("%C3%B7")){
         result = num1 / num2;
-        break;
-      case decodeURI("%C3%97"):
+      }
+      if(operator === decodeURI("%C3%97")){
         result = num1 * num2;
-        break;
-      case "-":
+      }
+      if(operator === "-"){
         result = num1 - num2;
-        break;
-      case "+":
-        result = num1 + num2;
-        break;
-    }
-    console.log(result);
-    $("#screen").text(result);
+      }
+      if(operator === "+"){
+        result = num1 + num2; 
+      }
+      console.log(result);
+      $("#screen").text(result);
+      $("#small-screen").text(num1 + " " + operator + " " + num2);
+      clearVars();
+    });
   }
   
 
