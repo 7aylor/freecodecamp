@@ -94,3 +94,6 @@ h1{
   transform: translate(0px, 3px);
   box-shadow: none;
 }
+footer{
+  margin-top: 50px;
+}
