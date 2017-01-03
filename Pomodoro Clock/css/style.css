@@ -1,0 +1,35 @@
+body{
+  background-color: #1A1A1A;
+  color: white;
+}
+h1{
+  text-align: center;
+  font-size: 4em;
+  margin: 0;
+}
+.circle{
+  background-color: green;
+  height: 6em;
+  width: 6em;
+  display: inline-block;
+  border-radius: 100%;
+  border: 3px black solid;
+}
+#clock{
+  /*filled in #A565C9*/
+  background-color: #1A0824;
+  height: 20em;
+  width: 20em;
+  border-radius: 100%;
+  display: block;
+  margin: 0 auto;
+  border: 5px #1F2021 solid;
+  margin-top: 2em;
+}
+
+#time-remaining {
+  font-size: 5em;
+  text-align: center;
+  margin-top: 1.4em;
+  font-family: sans-serif;
+}
