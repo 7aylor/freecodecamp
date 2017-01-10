@@ -8,13 +8,22 @@ h1{
   font-size: 4em;
   margin: 0;
 }
-.circle{
-  background-color: green;
-  height: 6em;
-  width: 6em;
+ul{
+
+  margin: 0;
+  padding: 0;
+}
+h3{
+  font-weight: normal;
+}
+ul li{
+  list-style-type: none;
+  display: inline;
+  margin: 10px;
+  font-size: 1.4em;
+}
+.adjuster{
   display: inline-block;
-  border-radius: 100%;
-  border: 3px black solid;
 }
 #clock{
   /*filled in #A565C9*/
@@ -35,14 +44,31 @@ h1{
   font-family: sans-serif;
 }
 
-#adjusters{
-  //background-color: white;
+#adjusters-container{
+  //background-color: red;
   text-align: center;
-  width: 400px;
+  width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
 }
 #break{
-  margin-right: 75px
+  margin-right: 3em;
+}
+.hover:hover{
+  cursor: pointer;
+}
+
+#start{
+  background-color: #1F2021;
+  width: 150px;
+  height: 50px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.5em;
+  padding-top: 15px;
+  border-radius: 4px;
+  
 }

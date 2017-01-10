@@ -1,13 +1,44 @@
 //minutes used for clock
 var totalMinutes = 25;
+var breakLength = 5;
 var totalSeconds = totalMinutes * 60;
 var displaySeconds = "00";
+var play = "Start";
 
 $(document).ready(function(){
-  $("#time-remaining").text(totalMinutes + ":" + displaySeconds);
+  setInitNums();
+  
+  $("#add-break").click(function(){
+    breakLength++;
+    setInitNums();
+  });
+  
+  $("#subtract-break").click(function(){
+    if(breakLength > 1){
+      breakLength--;  
+    }    
+    setInitNums();
+  });
+  
+    $("#add-session").click(function(){
+    totalMinutes++;
+    setInitNums();
+  });
+  
+  $("#subtract-session").click(function(){
+    if(totalMinutes > 1){
+      totalMinutes--;  
+    }    
+    setInitNums();
+  });
+  
+  /*
   if(totalSeconds > 0){
     setInterval(startTimer, 1000);
   }
+  
+  */
+  
 });
 
 //timeer for clock
@@ -34,4 +65,11 @@ function startTimer(){
   
   //update our clock
   $("#time-remaining").text(totalMinutes + ":" + displaySeconds);
+}
+
+function setInitNums(){
+  $("#sessionnum").text(totalMinutes);
+  $("#breaknum").text(breakLength);
+  $("#time-remaining").text(totalMinutes + ":" + displaySeconds);
+  totalSeconds = totalMinutes * 60;
 }
