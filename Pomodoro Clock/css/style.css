@@ -44,7 +44,6 @@ ul li{
 }
 
 #adjusters-container{
-  //background-color: red;
   text-align: center;
   width: 500px;
   margin-left: auto;
@@ -57,20 +56,25 @@ ul li{
 .hover:hover{
   cursor: pointer;
 }
-
-#start{
-  background-color: #1F2021;
-  width: 150px;
-  height: 50px;
-  margin-top: 15px;
+#buttons{
+  width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+.button{
+  background-color: #1F2021;
+  display: inline-block;
+  margin-left: 62px;
+  margin-right: 62px;
+  width: 120px;
+  height: 40px;
+  margin-top: 15px;
+  padding-top: 10px;
   text-align: center;
   font-size: 1.5em;
-  padding-top: 25px;
   border-radius: 4px;
 }
-#start:hover{
+.button:hover{
   cursor: pointer;
 }
 

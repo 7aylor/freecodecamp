@@ -1,7 +1,9 @@
 //minutes used for clock
 var totalMinutes = 25;
+var chosenMinutes = totalMinutes;
 var breakLength = 5;
 var totalSeconds = totalMinutes * 60;
+var totalBreakSeconds = breakLength * 60;
 var displaySeconds = "00";
 var start = "Start";
 var interval;
@@ -21,14 +23,16 @@ $(document).ready(function(){
     setInitNums();
   });
   
-    $("#add-session").click(function(){
+  $("#add-session").click(function(){
     totalMinutes++;
+    chosenMinutes = totalMinutes;
     setInitNums();
   });
   
   $("#subtract-session").click(function(){
     if(totalMinutes > 1){
-      totalMinutes--;  
+      totalMinutes--;
+      chosenMinutes = totalMinutes;
     }
     
     setInitNums();
@@ -52,11 +56,20 @@ $(document).ready(function(){
     $("#start").text(start);
   });
   
+  $("#reset").click(function(){
+    totalMinutes = chosenMinutes;
+    displaySeconds = "00";
+    setInitNums();
+  });
+  
 });
 
 //timeer for clock
 function startTimer(){
 
+  //subtract a second from totalSeconds
+  totalSeconds--;
+  
   //get remainder of totalSeconds / 60
   var remainder = totalSeconds % 60;
 
@@ -75,9 +88,6 @@ function startTimer(){
   }
   //update our clock
   $("#time-remaining").text(totalMinutes + ":" + displaySeconds);
-  
-  //subtract a second from totalSeconds
-  totalSeconds--;
   
 }
 
