@@ -7,6 +7,8 @@ var totalBreakSeconds = breakLength * 60;
 var displaySeconds = "00";
 var start = "Start";
 var interval;
+var alarmString = "http://res.cloudinary.com/buchheitt/video/upload/v1484605417/AlarmSound.mp3";
+var alarm = new Audio(alarmString);
 
 $(document).ready(function(){
   setInitNums();
@@ -67,6 +69,17 @@ $(document).ready(function(){
 //timeer for clock
 function startTimer(){
 
+  if(totalSeconds === 0){
+    clearInterval(interval);
+    start = "Start";
+    $("#start").toggleClass("stop");
+    $("#start").toggleClass("start");
+    $("#start").text(start);
+    totalMinutes = chosenMinutes;
+    totalSeconds = totalMinutes * 60;
+    alarm.play();
+    return;
+  }
   //subtract a second from totalSeconds
   totalSeconds--;
   
@@ -80,7 +93,7 @@ function startTimer(){
 
   //if remainder is less than 10, add a 0 to the front of the remainder
   if(remainder < 10){
-    displaySeconds = "0" + remainder
+    displaySeconds = "0" + remainder;
   }
   //otherwise, use the remainder
   else{
