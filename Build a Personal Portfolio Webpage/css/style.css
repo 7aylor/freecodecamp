@@ -2,6 +2,9 @@ body {
   background-color: indigo;
 }
 
+a:hover{
+  cursor: pointer;
+}
 .navbar-inverse .navbar-brand {
   color: white;
 }
