@@ -1,0 +1,16 @@
+.button:hover{
+  cursor: pointer;
+}
+
+div{
+  background-color: green;
+}
+
+.button{
+  color: white;
+  margin-bottom: 400px;
+  background-color: blue;
+  text-align: center;
+  height: 50px;
+  width: 100px;
+}
