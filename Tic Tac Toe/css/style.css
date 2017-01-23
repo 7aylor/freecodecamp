@@ -1,0 +1,58 @@
+body{
+  background-color: #1F55D0;
+}
+
+#container{
+  height: 400px;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+table{
+  margin: 0 auto;
+  padding: 0;
+}
+
+tr{
+  height: 100px;
+  width: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+td{
+  border: 5px solid #03226B;
+  height: 100px;
+  width: 100px;
+  margin: 0;
+  padding: 0;
+  font-size: 85px;
+  text-align: center;
+  font-family: Arial;
+    
+  //X #5B7FD1 or #14BDAC
+  //O #CDD6EB
+}
+
+td:hover{
+  cursor: pointer;
+}
+
+.row1 {
+  border-top-style: none;
+}
+
+.row3 {
+  border-bottom-style: none;
+}
+
+.col1 {
+  border-left-style: none;
+}
+
+.col3 {
+  border-right-style: none;
+}
+
+//grid #03226B
