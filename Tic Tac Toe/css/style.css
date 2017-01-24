@@ -1,8 +1,30 @@
 body{
   background-color: #1F55D0;
+  font-family: calibri;
+  text-align: center;
+}
+
+h1{
+  color: white;
+  font-size: 4em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h2{
+  margin: 0;
+  font-size: 2.4em;
+}
+
+#player-choice{
+  height: 400px;
+  width: 500px;
+  background-color: white;
+  margin: 0 auto;
 }
 
 #container{
+  display: none;
   height: 400px;
   width: 500px;
   margin: 0 auto;
