@@ -16,7 +16,13 @@ h2{
   font-size: 2.4em;
 }
 
+p{
+  margin: 0;
+  padding: 0;
+}
+
 #player-choice{
+  display: none;
   height: 400px;
   width: 500px;
   background-color: white;
@@ -36,11 +42,34 @@ h2{
 }
 
 #container{
-  display: none;
-  height: 400px;
-  width: 500px;
+  height: 328px;
+  width: 328px;
+  display: block;
+  position: relative;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+#winner-overlay{
+  display: none;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  padding: 0;
+  background-color: #03226B;
+  font-size: 3em;
+  color: white;
+  transition: opacity .5s;
+  test-align: center;
+  margin: 0 auto;
+}
+
+#winner-overlay:hover{
+  cursor: arrow;
+  opacity: .9;
 }
 
 table{
@@ -64,9 +93,6 @@ td{
   font-size: 85px;
   text-align: center;
   font-family: Arial;
-    
-  //X #5B7FD1 or #14BDAC
-  //O #CDD6EB
 }
 
 td:hover{
@@ -89,4 +115,22 @@ td:hover{
   border-right-style: none;
 }
 
-//grid #03226B
+#yes{
+  margin: 0 auto;
+  width: 65px;
+}
+#no{
+  margin: 0 auto;
+  width: 65px;
+}
+
+#yes:hover{
+  cursor: pointer;
+}
+#no:hover{
+  cursor: pointer;
+}
+
+//grid #03226B    
+//X #5B7FD1 or #14BDAC
+//O #CDD6EB
