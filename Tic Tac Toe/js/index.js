@@ -1,6 +1,7 @@
 var o = "&#9675";
 var x = "&times";
 var team;
+var computerTeam;
 var turn = "x";
 var grid = ["", "", "", "", "", "", "", "", ""];
 var winner = "";
@@ -10,10 +11,10 @@ window.onload = function() {
 
   //initial screen to choose x or o
   document.getElementById("x").onclick = function() {
-    teamChoiceClicked("x")
+    teamChoiceClicked("x");
   };
   document.getElementById("o").onclick = function() {
-    teamChoiceClicked("o")
+    teamChoiceClicked("o");
   };
 
   //write to screen
@@ -48,6 +49,12 @@ window.onload = function() {
   //set the team and hide choice screen, show tic tac toe board
   function teamChoiceClicked(choice) {
     team = choice;
+    if (team === "x") {
+      computerTeam = "o";
+    } else {
+      computerTeam = "x";
+      computerPlay();
+    }
     document.getElementById("player-choice").style.display = "none";
     document.getElementById("container").style.display = "block";
   }
@@ -55,7 +62,7 @@ window.onload = function() {
   function clickCell(id) {
     if (document.getElementById(id).innerHTML === "") {
       var index = parseInt(id) - 1;
-      if (turn === "x") {
+      /*if (turn === "x") {
         document.getElementById(id).innerHTML = x;
         turn = "o";
         grid[index] = x;
@@ -66,15 +73,57 @@ window.onload = function() {
         turn = "x";
         grid[index] = o;
       }
-      
+      */
+      if (team === "x") {
+        document.getElementById(id).innerHTML = x;
+        document.getElementById(id).style.color = "#14BDAC";
+        grid[index] = x;
+        if (winner === "") {
+          computerPlay();
+        }
+      } else {
+        if(winner === "" && playCount > 0){
+          computerPlay();
+        }
+        document.getElementById(id).innerHTML = o;
+        document.getElementById(id).style.color = "#CDD6EB";
+        grid[index] = o;
+      }
+
       playCount++;
-      console.log(playCount);
-      
-      if(playCount > 4){
+
+      if (playCount > 4) {
         checkWin();
       }
-      
+
+      console.log(grid);
+
     }
+  }
+
+  function computerPlay() {
+
+    var cellChoice = Math.floor((Math.random() * 9));
+    while (grid[cellChoice] !== "") {
+      cellChoice = Math.floor((Math.random() * 9));
+    }
+
+    var index = cellChoice + 1;
+    
+    if (computerTeam === "x") {
+      document.getElementById(index.toString()).innerHTML = x;
+      document.getElementById(index.toString()).style.color = "#14BDAC";
+      grid[cellChoice] = x;
+    } else {
+      document.getElementById(index).innerHTML = o;
+      document.getElementById(index).style.color = "#CDD6EB";
+      grid[cellChoice] = o;
+    }
+
+    playCount++;
+
+    checkWin();
+
   }
 
   function checkWin() {
@@ -136,15 +185,13 @@ window.onload = function() {
     }
 
     if (winner !== "" || playCount === 9) {
-      
-      console.log("called");
+
       var overlay = document.getElementById("winner-overlay");
       overlay.style.display = "block";
 
-      if(winner === ""){
+      if (winner === "") {
         document.getElementById("win-msg").innerHTML = "It's a tie!<br><br>";
-      }
-      else{
+      } else {
         document.getElementById("win-msg").innerHTML = winner + " Wins!<br><br>";
       }
 
@@ -171,6 +218,11 @@ window.onload = function() {
 
     document.getElementById("winner-overlay").style.display = "none";
     document.getElementById("win-msg").innerHTML = "";
+    
+    if(team === "o"){
+      computerPlay();
+    }
+    
   }
 
   function gameOver() {
