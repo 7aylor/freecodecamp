@@ -4,6 +4,7 @@ var team;
 var turn = "x";
 var grid = ["", "", "", "", "", "", "", "", ""];
 var winner = "";
+var playCount = 0;
 
 window.onload = function() {
 
@@ -62,12 +63,17 @@ window.onload = function() {
       } else {
         document.getElementById(id).innerHTML = o;
         document.getElementById(id).style.color = "#CDD6EB";
-        document.getElementById(id).style.fontWeight = "bold";
         turn = "x";
         grid[index] = o;
       }
-
-      checkWin();
+      
+      playCount++;
+      console.log(playCount);
+      
+      if(playCount > 4){
+        checkWin();
+      }
+      
     }
   }
 
@@ -80,68 +86,74 @@ window.onload = function() {
       winner = grid[0];
     }
     //across middle row
-    if (grid[3] !== "" && grid[3] === grid[4] && grid[4] === grid[5]) {
+    else if (grid[3] !== "" && grid[3] === grid[4] && grid[4] === grid[5]) {
       document.getElementById("4").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("6").style.backgroundColor = "#D41818";
       winner = grid[3];
     }
     //across bottom row
-    if (grid[6] !== "" && grid[6] === grid[7] && grid[7] === grid[8]) {
+    else if (grid[6] !== "" && grid[6] === grid[7] && grid[7] === grid[8]) {
       document.getElementById("7").style.backgroundColor = "#D41818";
       document.getElementById("8").style.backgroundColor = "#D41818";
       document.getElementById("9").style.backgroundColor = "#D41818";
       winner = grid[6];
     }
     //vertical first column
-    if(grid[0] !== "" && grid[0] === grid[3] && grid[3] === grid[6]){
+    else if (grid[0] !== "" && grid[0] === grid[3] && grid[3] === grid[6]) {
       document.getElementById("1").style.backgroundColor = "#D41818";
       document.getElementById("4").style.backgroundColor = "#D41818";
       document.getElementById("7").style.backgroundColor = "#D41818";
       winner = grid[0];
     }
     //vertical middle column
-    if(grid[1] !== "" && grid[1] === grid[4] && grid[4] === grid[7]){
+    else if (grid[1] !== "" && grid[1] === grid[4] && grid[4] === grid[7]) {
       document.getElementById("2").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("8").style.backgroundColor = "#D41818";
       winner = grid[1];
     }
     //vertical last columb
-    if(grid[2] !== "" && grid[2] === grid[5] && grid[5] === grid[8]){
+    else if (grid[2] !== "" && grid[2] === grid[5] && grid[5] === grid[8]) {
       document.getElementById("3").style.backgroundColor = "#D41818";
       document.getElementById("6").style.backgroundColor = "#D41818";
       document.getElementById("9").style.backgroundColor = "#D41818";
       winner = grid[2];
     }
     //diagonal left to right, top to bottom
-    if(grid[0] !== "" && grid[0] === grid[4] && grid[4] === grid[8]){
+    else if (grid[0] !== "" && grid[0] === grid[4] && grid[4] === grid[8]) {
       document.getElementById("1").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("9").style.backgroundColor = "#D41818";
       winner = grid[0];
     }
     //diagonal left to right, bottom to top
-    if(grid[2] !== "" && grid[2] === grid[4] && grid[4] === grid[6]){
+    else if (grid[2] !== "" && grid[2] === grid[4] && grid[4] === grid[6]) {
       document.getElementById("3").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("7").style.backgroundColor = "#D41818";
       winner = grid[2];
     }
-    
-    if(winner !== ""){
+
+    if (winner !== "" || playCount === 9) {
+      
+      console.log("called");
       var overlay = document.getElementById("winner-overlay");
       overlay.style.display = "block";
 
-      //show winner by adding new element to first element of overlay
-      var winText = document.createElement("p");
-      winText.innerHTML = winner + " Wins!<br><br>";
-      overlay.insertBefore(winText, overlay.firstChild);
-      
-      document.getElementById("yes").onclick = function(){
+      if(winner === ""){
+        document.getElementById("win-msg").innerHTML = "It's a tie!<br><br>";
+      }
+      else{
+        document.getElementById("win-msg").innerHTML = winner + " Wins!<br><br>";
+      }
+
+      document.getElementById("yes").onclick = function() {
         clearGrid();
       }
-      
+      document.getElementById("no").onclick = function() {
+        gameOver();
+      }
     }
 
   }
@@ -149,17 +161,19 @@ window.onload = function() {
   function clearGrid() {
     for (var i = 1; i < 10; i++) {
       document.getElementById(i.toString()).innerHTML = "";
-      document.getElementById(i.toString()).backgroundColor = "";
+      document.getElementById(i.toString()).style.backgroundColor = "";
     }
 
+    turn = "x";
     grid = ["", "", "", "", "", "", "", "", ""];
-    
+    winner = "";
+    playCount = 0;
+
     document.getElementById("winner-overlay").style.display = "none";
-    var overlay = document.getElementById("winner-overlay");
-    //overlay.removeChild(overlay.firstElement);
+    document.getElementById("win-msg").innerHTML = "";
   }
-  
-  function gameOver(){
-    
+
+  function gameOver() {
+    //document.getElementById("winner-overlay").style.opacity = "0";
   }
 }

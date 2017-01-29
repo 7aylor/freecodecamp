@@ -21,19 +21,11 @@ p{
   padding: 0;
 }
 
-#player-choice{
-  display: none;
-  height: 400px;
-  width: 500px;
-  background-color: white;
-  margin: 0 auto;
-  border-radius: 50px;
-}
-
 .choice{
-  width: 5px;
-  margin-top: 50px;
-  margin-left: 240px;
+  font-weight: bold;
+  font-size: 2em;
+  display: inline;
+  margin: 40px;
 }
 
 .choice:hover{
@@ -48,13 +40,13 @@ p{
   position: relative;
   margin: 0 auto;
   margin-top: 30px;
+  font-weight: bold;
 }
 
-#winner-overlay{
-  display: none;
+.menu{
+  border-radius: 10px;
   height: 100%;
   width: 100%;
-  opacity: 0;
   top: 0;
   left: 0;
   position: absolute;
@@ -62,9 +54,18 @@ p{
   background-color: #03226B;
   font-size: 3em;
   color: white;
-  transition: opacity .5s;
   test-align: center;
   margin: 0 auto;
+}
+
+#player-choice{
+  display: block;
+}
+
+#winner-overlay{
+  display: none;
+  opacity: 0;
+  transition: opacity .5s;
 }
 
 #winner-overlay:hover{

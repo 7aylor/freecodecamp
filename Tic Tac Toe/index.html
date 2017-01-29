@@ -14,11 +14,6 @@
 <body>
   <body>
   <h1>Tic Tac Toe</h1>
-  <div id="player-choice">
-    <h2>Choose your team:</h2>
-    <h2 class="choice" id="x" onclick="teamChoiceClicked()">X</h2>
-    <h2 class="choice" id="o" onclick="teamChoiceClicked()">O</h2>
-  </div>
   <div id="container">
     <table id="game">
       <tr>
@@ -37,7 +32,13 @@
         <td class="row3 col3" id="9" onclick()="clickCell()"></td>
       </tr>
     </table>
-    <div id="winner-overlay">
+    <div id="player-choice" class="menu">
+      <p>Choose your team:</p>
+      <p class="choice" id="x" onclick="teamChoiceClicked()">&times;</p>
+      <p class="choice" id="o" onclick="teamChoiceClicked()">&#9675;</p>
+    </div>
+    <div id="winner-overlay" class="menu">
+      <p id="win-msg"></p>
       <p id="play-text">Play Again?</p>
       <p id="yes" onclick="clearGrid()">Yes</p>
       <div id="no" onclick="gameOver()">No</div>
