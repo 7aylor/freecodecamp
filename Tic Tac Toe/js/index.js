@@ -77,20 +77,26 @@ window.onload = function() {
       if (team === "x") {
         document.getElementById(id).innerHTML = x;
         document.getElementById(id).style.color = "#14BDAC";
-        grid[index] = x;
-        if (winner === "") {
+        grid[index] = "x";
+        playCount++;
+        if (winner === "" && playCount < 9) {
           computerPlay();
+          if(winner !== ""){
+            return;
+          }
         }
       } else {
         if(winner === "" && playCount > 0){
           computerPlay();
+          if(winner !== ""){
+            return;
+          }
         }
         document.getElementById(id).innerHTML = o;
         document.getElementById(id).style.color = "#CDD6EB";
-        grid[index] = o;
+        grid[index] = "o";
+        playCount++;
       }
-
-      playCount++;
 
       if (playCount > 4) {
         checkWin();
@@ -102,47 +108,51 @@ window.onload = function() {
   }
 
   function computerPlay() {
-
-    var cellChoice = Math.floor((Math.random() * 9));
     while (grid[cellChoice] !== "") {
-      cellChoice = Math.floor((Math.random() * 9));
+      var cellChoice = Math.floor((Math.random() * 9));
     }
+    
+    console.log("before: " + cellChoice);
 
     var index = cellChoice + 1;
+    
+    console.log("after: " + cellChoice);
     
     if (computerTeam === "x") {
       document.getElementById(index.toString()).innerHTML = x;
       document.getElementById(index.toString()).style.color = "#14BDAC";
-      grid[cellChoice] = x;
+      grid[cellChoice] = "x";
     } else {
       document.getElementById(index).innerHTML = o;
       document.getElementById(index).style.color = "#CDD6EB";
-      grid[cellChoice] = o;
+      grid[cellChoice] = "o";
     }
 
     playCount++;
 
+    console.log(grid);
+    
     checkWin();
 
   }
 
   function checkWin() {
     //across top row
-    if (grid[0] !== "" && grid[0] === grid[1] && grid[1] === grid[2]) {
+    if (grid[0] !== "" && grid[0] === grid[1] && grid[0] === grid[2]) {
       document.getElementById("1").style.backgroundColor = "#D41818";
       document.getElementById("2").style.backgroundColor = "#D41818";
       document.getElementById("3").style.backgroundColor = "#D41818";
       winner = grid[0];
     }
     //across middle row
-    else if (grid[3] !== "" && grid[3] === grid[4] && grid[4] === grid[5]) {
+    else if (grid[3] !== "" && grid[3] === grid[4] && grid[3] === grid[5]) {
       document.getElementById("4").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("6").style.backgroundColor = "#D41818";
       winner = grid[3];
     }
     //across bottom row
-    else if (grid[6] !== "" && grid[6] === grid[7] && grid[7] === grid[8]) {
+    else if (grid[6] !== "" && grid[6] === grid[7] && grid[6] === grid[8]) {
       document.getElementById("7").style.backgroundColor = "#D41818";
       document.getElementById("8").style.backgroundColor = "#D41818";
       document.getElementById("9").style.backgroundColor = "#D41818";
@@ -156,28 +166,28 @@ window.onload = function() {
       winner = grid[0];
     }
     //vertical middle column
-    else if (grid[1] !== "" && grid[1] === grid[4] && grid[4] === grid[7]) {
+    else if (grid[1] !== "" && grid[1] === grid[4] && grid[1] === grid[7]) {
       document.getElementById("2").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("8").style.backgroundColor = "#D41818";
       winner = grid[1];
     }
-    //vertical last columb
-    else if (grid[2] !== "" && grid[2] === grid[5] && grid[5] === grid[8]) {
+    //vertical last column
+    else if (grid[2] !== "" && grid[2] === grid[5] && grid[2] === grid[8]) {
       document.getElementById("3").style.backgroundColor = "#D41818";
       document.getElementById("6").style.backgroundColor = "#D41818";
       document.getElementById("9").style.backgroundColor = "#D41818";
       winner = grid[2];
     }
     //diagonal left to right, top to bottom
-    else if (grid[0] !== "" && grid[0] === grid[4] && grid[4] === grid[8]) {
+    else if (grid[0] !== "" && grid[0] === grid[4] && grid[0] === grid[8]) {
       document.getElementById("1").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("9").style.backgroundColor = "#D41818";
       winner = grid[0];
     }
     //diagonal left to right, bottom to top
-    else if (grid[2] !== "" && grid[2] === grid[4] && grid[4] === grid[6]) {
+    else if (grid[2] !== "" && grid[2] === grid[4] && grid[2] === grid[6]) {
       document.getElementById("3").style.backgroundColor = "#D41818";
       document.getElementById("5").style.backgroundColor = "#D41818";
       document.getElementById("7").style.backgroundColor = "#D41818";
