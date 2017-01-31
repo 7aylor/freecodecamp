@@ -1,8 +1,8 @@
+//variables
 var o = "&#9675";
 var x = "&times";
 var team;
 var computerTeam;
-var turn = "x";
 var grid = ["", "", "", "", "", "", "", "", ""];
 var winner = "";
 var playCount = 0;
@@ -112,6 +112,12 @@ window.onload = function() {
     //while the cellChoice is not empty and is taken by the player, choose a new cell
     while (grid[cellChoice] !== "" || grid[cellChoice] === team) {
       var cellChoice = Math.floor((Math.random() * 9));
+      if(checkEasyWin(computerTeam) !== -1){
+        cellChoice = checkEasyWin(computerTeam);
+      }
+      else if(checkEasyWin(team) !== -1){
+        cellChoice = checkEasyWin(team);
+      } 
     }
     
     //get the index of the cell, used for displaying on screen
@@ -135,6 +141,98 @@ window.onload = function() {
     checkWin();
 
   }
+  
+  function checkEasyWin(thisTeam){
+      /*check for easy player victory*/
+      ////horizontal
+      //first row
+      if(grid[0] === thisTeam && grid[2] === thisTeam && grid[1] === ""){
+        return 1;
+      }
+      else if(grid[0] === thisTeam && grid[1] === thisTeam && grid[2] === ""){
+        return 2;
+      }
+      else if(grid[1] === thisTeam && grid[2] === thisTeam && grid[0] === ""){
+        return 0;
+      }
+      //middle row
+      else if(grid[3] === thisTeam && grid[5] === thisTeam && grid[4] === ""){
+        return 4;
+      }
+      else if(grid[3] === thisTeam && grid[4] === thisTeam && grid[5] === ""){
+        return 5;
+      }
+      else if(grid[4] === thisTeam && grid[5] === thisTeam && grid[3] === ""){
+        return 3;
+      }
+      //bottom row
+      else if(grid[6] === thisTeam && grid[8] === thisTeam && grid[7] === ""){
+        return 7;
+      }
+      else if(grid[6] === thisTeam && grid[7] === thisTeam && grid[8] === ""){
+        return 8;
+      }
+      else if(grid[7] === thisTeam && grid[8] === thisTeam && grid[6] === ""){
+        return 6;
+      }
+      ////vertical
+      //first column
+      else if(grid[0] === thisTeam && grid[6] === thisTeam && grid[3] === ""){
+        return 3;
+      }
+      else if(grid[0] === thisTeam && grid[3] === thisTeam && grid[6] === ""){
+        return 6;
+      }
+      else if(grid[3] === thisTeam && grid[6] === thisTeam && grid[0] === ""){
+        return 0;
+      }
+      //middle column
+      else if(grid[1] === thisTeam && grid[7] === thisTeam && grid[4] === ""){
+        return 4;
+      }
+      else if(grid[1] === thisTeam && grid[4] === thisTeam && grid[7] === ""){
+        return 7;
+      }
+      else if(grid[4] === thisTeam && grid[7] === thisTeam && grid[1] === ""){
+        return 1;
+      }
+      //last column
+      else if(grid[2] === thisTeam && grid[8] === thisTeam && grid[5] === ""){
+        return 5;
+      }
+      else if(grid[2] === thisTeam && grid[5] === thisTeam && grid[8] === ""){
+        return 8;
+      }
+      else if(grid[5] === thisTeam && grid[8] === thisTeam && grid[2] === ""){
+        return 2;
+      }
+      ////diagonal
+      //diagonal left to right, top to bottom
+      else if(grid[0] === thisTeam && grid[8] === thisTeam && grid[4] === ""){
+        return 4;
+      }
+      else if(grid[0] === thisTeam && grid[4] === thisTeam && grid[8] === ""){
+        return 8;
+      }
+      else if(grid[4] === thisTeam && grid[8] === thisTeam && grid[0] === ""){
+        return 0;
+      }
+      //diagonal left to right, bottom to top
+      else if(grid[2] === thisTeam && grid[6] === thisTeam && grid[4] === ""){
+        return 4;
+      }
+      else if(grid[2] === thisTeam && grid[4] === thisTeam && grid[6] === ""){
+        return 6;
+      }
+      else if(grid[4] === thisTeam && grid[6] === thisTeam && grid[2] === ""){
+        return 2;
+      }
+      //if none of these are true, return -1
+      else{
+        return -1;
+      }
+  }
+  
 
   function checkWin() {
     //across top row
@@ -231,7 +329,6 @@ window.onload = function() {
     }
 
     //set vars back to default
-    turn = "x";
     grid = ["", "", "", "", "", "", "", "", ""];
     winner = "";
     playCount = 0;
