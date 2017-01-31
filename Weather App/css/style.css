@@ -1,4 +1,4 @@
-body{
+body {
   text-align: center;
   color: white;
   background-color: #3A3A3A;
@@ -6,16 +6,17 @@ body{
   background-size: cover;
 }
 
-h1{
+h1 {
   font-size: 4em;
 }
 
-#btn{
+#btn {
   margin-top: 5px;
   margin-bottom: 2%;
   border-radius: 2px;
   background-color: #969696;
 }
-button:focus{
-  outline:0;
+
+button:focus {
+  outline: 0;
 }

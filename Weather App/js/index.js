@@ -33,14 +33,6 @@ $(document).ready(function() {
           $('body').css('background-image','url(https://static.pexels.com/photos/6672/snow-forest-trees-winter.jpeg)');
           $('body').css('color','black');
           break;
-        case "Snow":
-          $('body').css('background-image','url(https://static.pexels.com/photos/6672/snow-forest-trees-winter.jpeg)');
-          $('body').css('color','black');
-          break;
-        case "Clear":
-          $('body').css('background-image','url(https://static.pexels.com/photos/28215/pexels-photo.jpg)');
-          $('body').css('color','black');
-          break;
         case "Clear":
           $('body').css('background-image','url(https://static.pexels.com/photos/28215/pexels-photo.jpg)');
           $('body').css('color','black');
@@ -49,8 +41,8 @@ $(document).ready(function() {
           $('body').css('background-image','url(https://static.pexels.com/photos/3888/landscape-seascape-dark-clouds.jpg)');
           break;
         default:
-        
-      }
+          $('body').css('color','black');
+              }
       
       $('#city').html(wd.name + ', ' + wd.sys.country);
       $('#temp').html(fahr + "&deg " + units);
