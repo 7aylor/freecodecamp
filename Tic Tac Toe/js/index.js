@@ -17,7 +17,7 @@ window.onload = function() {
     teamChoiceClicked("o");
   };
 
-  //write to screen
+  //write to x and o to screen on clicks
   document.getElementById("1").onclick = function() {
     clickCell("1")
   };
@@ -48,90 +48,90 @@ window.onload = function() {
 
   //set the team and hide choice screen, show tic tac toe board
   function teamChoiceClicked(choice) {
+    
+    //player's team
     team = choice;
+    
+    //if team is x, computer is o
     if (team === "x") {
       computerTeam = "o";
-    } else {
+    } 
+    //otherwise, computer is x and they go first
+    else {
       computerTeam = "x";
       computerPlay();
     }
+    
+    //hide choice and show grid
     document.getElementById("player-choice").style.display = "none";
     document.getElementById("container").style.display = "block";
   }
 
+  //play of the game by clicking
   function clickCell(id) {
+    //only allow click on an empty cell
     if (document.getElementById(id).innerHTML === "") {
+      
+      //get the index of the cell
       var index = parseInt(id) - 1;
-      /*if (turn === "x") {
-        document.getElementById(id).innerHTML = x;
-        turn = "o";
-        grid[index] = x;
-        document.getElementById(id).style.color = "#14BDAC";
-      } else {
-        document.getElementById(id).innerHTML = o;
-        document.getElementById(id).style.color = "#CDD6EB";
-        turn = "x";
-        grid[index] = o;
-      }
-      */
+      
+      //if team is x
       if (team === "x") {
+        //display x in the clicked cell, increase playCount and check for a winner
         document.getElementById(id).innerHTML = x;
         document.getElementById(id).style.color = "#14BDAC";
         grid[index] = "x";
         playCount++;
+        checkWin();
+        
+        //if there is no winner, computer gets to play
         if (winner === "" && playCount < 9) {
           computerPlay();
-          if(winner !== ""){
-            return;
-          }
         }
-      } else {
-        if(winner === "" && playCount > 0){
-          computerPlay();
-          if(winner !== ""){
-            return;
-          }
-        }
+      } 
+      //if team is o
+      else {
+        //display o in the clicked cell, increase playCount and check for a winner
         document.getElementById(id).innerHTML = o;
         document.getElementById(id).style.color = "#CDD6EB";
         grid[index] = "o";
         playCount++;
-      }
-
-      if (playCount > 4) {
         checkWin();
+        
+        //if there is no winner, computer gets to play
+        if(winner === ""){
+          computerPlay();
+        }
       }
-
-      console.log(grid);
-
     }
   }
 
+  //computer plays in a random location
   function computerPlay() {
-    while (grid[cellChoice] !== "") {
+    
+    //while the cellChoice is not empty and is taken by the player, choose a new cell
+    while (grid[cellChoice] !== "" || grid[cellChoice] === team) {
       var cellChoice = Math.floor((Math.random() * 9));
     }
     
-    console.log("before: " + cellChoice);
-
+    //get the index of the cell, used for displaying on screen
     var index = cellChoice + 1;
     
-    console.log("after: " + cellChoice);
-    
+    //if computer is x, display x
     if (computerTeam === "x") {
       document.getElementById(index.toString()).innerHTML = x;
       document.getElementById(index.toString()).style.color = "#14BDAC";
       grid[cellChoice] = "x";
-    } else {
+    }
+    //otherwise display o
+    else {
       document.getElementById(index).innerHTML = o;
       document.getElementById(index).style.color = "#CDD6EB";
       grid[cellChoice] = "o";
     }
 
+    //increase playCount and check if there is winner
     playCount++;
-
-    console.log(grid);
-    
     checkWin();
 
   }
@@ -194,20 +194,27 @@ window.onload = function() {
       winner = grid[2];
     }
 
+    //display the winner
     if (winner !== "" || playCount === 9) {
-
+      
+      //unhide winner overlay
       var overlay = document.getElementById("winner-overlay");
       overlay.style.display = "block";
 
+      //if there is no winner, display that it's a tie
       if (winner === "") {
         document.getElementById("win-msg").innerHTML = "It's a tie!<br><br>";
-      } else {
+      } 
+      //otherwise, display the winner
+      else {
         document.getElementById("win-msg").innerHTML = winner + " Wins!<br><br>";
       }
-
+      
+      //if the player wants to play again, clear the grid and start over
       document.getElementById("yes").onclick = function() {
         clearGrid();
       }
+      //otherwise, the game is over and we stay here.
       document.getElementById("no").onclick = function() {
         gameOver();
       }
@@ -215,20 +222,25 @@ window.onload = function() {
 
   }
 
+  //clear the grid to play again
   function clearGrid() {
+    //loop through grid and clear onscreen elements
     for (var i = 1; i < 10; i++) {
       document.getElementById(i.toString()).innerHTML = "";
       document.getElementById(i.toString()).style.backgroundColor = "";
     }
 
+    //set vars back to default
     turn = "x";
     grid = ["", "", "", "", "", "", "", "", ""];
     winner = "";
     playCount = 0;
-
+    
+    //hide menus
     document.getElementById("winner-overlay").style.display = "none";
     document.getElementById("win-msg").innerHTML = "";
     
+    //if team is o, computer plays first
     if(team === "o"){
       computerPlay();
     }
@@ -236,6 +248,7 @@ window.onload = function() {
   }
 
   function gameOver() {
-    //document.getElementById("winner-overlay").style.opacity = "0";
+    //hide the winner overlay without disabling it
+    document.getElementById("winner-overlay").style.opacity = "0";
   }
 }
