@@ -1,0 +1,87 @@
+@btn-height-width: 230px;
+@margin: 20px;
+@color-circle-background: #232323;
+@color-green: #3FD54F;
+@color-red: #F92714;
+@color-blue: #008FE8;
+@color-yellow: #FDF329;
+
+#container{
+  margin: 0 auto;
+  position: relative;
+  width: 500px;
+}
+
+#outer-circle{
+  margin: 0 auto;
+  height: 500px;
+  width: 500px;
+  background-color: @color-circle-background;
+  border-radius: 100%;
+}
+
+#green-btn{
+  height: @btn-height-width;
+  width: @btn-height-width;
+  background-color: @color-green;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: @margin;
+  left: @margin;
+}
+
+#red-btn{
+  height: @btn-height-width;
+  width: @btn-height-width;
+  background-color: @color-red;
+  border-radius: 0 100% 0 0;
+  position: absolute;
+  top: @margin;
+  right: @margin;
+}
+
+#blue-btn{
+  height: @btn-height-width;
+  width: @btn-height-width;
+  background-color: @color-blue;
+  border-radius: 0 0 100% 0;
+  position: absolute;
+  bottom: @margin;
+  right: @margin;
+}
+
+#yellow-btn{
+  height: @btn-height-width;
+  width: @btn-height-width;
+  background-color: @color-yellow;
+  border-radius: 0 0 0 100%;
+  position: absolute;
+  bottom: @margin;
+  left: @margin;
+}
+
+#v-bar{
+  margin-left: 48%;
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  background-color: @color-circle-background;
+}
+
+#h-bar{
+  margin-top: 48%;
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  background-color: @color-circle-background;
+}
+
+#inner-circle{
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  border-radius: 100%;
+  top: 125px;
+  left: 125px;
+  background-color: @color-circle-background;
+}
