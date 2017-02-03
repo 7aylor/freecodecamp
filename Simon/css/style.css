@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:700&subset=latin-ext');
 #container {
   margin: 0 auto;
   position: relative;
@@ -9,6 +10,7 @@
   width: 500px;
   background-color: #232323;
   border-radius: 100%;
+  box-shadow: 0 0 20px gray;
 }
 #green-btn {
   height: 230px;
@@ -68,4 +70,34 @@
   top: 125px;
   left: 125px;
   background-color: #232323;
+}
+#white-circle {
+  font-family: 'Oswald', Airal, sans-serif;
+  height: 230px;
+  width: 230px;
+  position: absolute;
+  border-radius: 100%;
+  top: 135px;
+  left: 135px;
+  background-color: white;
+  color: #232323;
+}
+#simon {
+  font-weight: bold;
+  font-size: 4em;
+  margin: 15px 0 0 39px ;
+}
+#reg {
+  font-size: 12px;
+}
+#count {
+  height: 35px;
+  width: 60px;
+  border-radius: 10px;
+  border: 3px solid #232323;
+  background-color: #32050C;
+  text-align: center;
+  color: red;
+  font-size: 22px;
+  margin-left: 20px;
 }
