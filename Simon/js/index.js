@@ -86,25 +86,38 @@ $(document).ready(function(){
   
   function playGame(){
     var lost = false;
-    
-    while(lost !== true){
+    var currSound;
+    console.log("play clicked");
+    //while(lost !== true){
       var btnChoice = Math.floor((Math.random() * 4));
-      
+    
+      btnChoice = 1;
       if(btnChoice === 0){
-        
+        currSound = new Audio(buttons[0].sound);
+        currSound.playbackRate = 0.5;
+        $(buttons[0].buttonId).css("background-color", "purple");
+        currSound.play();
+        $(buttons[0].buttonId).css("background-color", "red");
       }
       else if(btnChoice === 1){
-        
+        currSound = new Audio(buttons[1].sound);
+        currSound.playbackRate = 0.5;
+        console.log(currSound.duration);
+        currSound.play();
       }
       else if(btnChoice === 2){
-        
+        currSound = new Audio(buttons[2].sound);
+        currSound.playbackRate = 0.5;
+        currSound.play();
       }
       else if(btnChoice === 3){
-        
+        currSound = new Audio(buttons[3].sound);
+        currSound.playbackRate = 0.5;
+        currSound.play();
       }
       
       playCount++;
-    }
+    //}
     
   }
   
