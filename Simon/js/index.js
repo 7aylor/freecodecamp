@@ -8,23 +8,16 @@ var playCount = 0;
 
 var buttons = [
   {color: 'red', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
-  buttonId: '#red-btn'},
+  buttonId: '#red-btn', colorHex: '#F92714'},
   {color: 'green', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
-  buttonId: '#green-btn'},
+  buttonId: '#green-btn', colorHex: '#3FD54F'},
   {color: 'yellow', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3',
-  buttonId: '#yellow-btn'},
+  buttonId: '#yellow-btn', colorHex: '#FDF329'},
   {color: 'blue', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3',
-  buttonId: '#blue-btn'},
-]
-
-/*
-var soundUrls = [
-  'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
-  'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
-  'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3', 
-  'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+  buttonId: '#blue-btn', colorHex: '#008FE8'},
 ];
-*/
+
+var buttonOrder = [];
 
 $(document).ready(function(){
   
@@ -86,39 +79,43 @@ $(document).ready(function(){
   
   function playGame(){
     var lost = false;
-    var currSound;
-    console.log("play clicked");
-    //while(lost !== true){
+    while(lost !== true && playCount <= 2){
       var btnChoice = Math.floor((Math.random() * 4));
     
-      btnChoice = 1;
+      //btnChoice = 0;
       if(btnChoice === 0){
-        currSound = new Audio(buttons[0].sound);
-        currSound.playbackRate = 0.5;
-        $(buttons[0].buttonId).css("background-color", "purple");
-        currSound.play();
-        $(buttons[0].buttonId).css("background-color", "red");
+        buttonOrder.push(buttons[0]);
       }
       else if(btnChoice === 1){
-        currSound = new Audio(buttons[1].sound);
-        currSound.playbackRate = 0.5;
-        console.log(currSound.duration);
-        currSound.play();
+        buttonOrder.push(buttons[1]);
       }
       else if(btnChoice === 2){
-        currSound = new Audio(buttons[2].sound);
-        currSound.playbackRate = 0.5;
-        currSound.play();
+        buttonOrder.push(buttons[2]);
       }
       else if(btnChoice === 3){
-        currSound = new Audio(buttons[3].sound);
-        currSound.playbackRate = 0.5;
-        currSound.play();
+        buttonOrder.push(buttons[3]);
       }
       
       playCount++;
-    //}
-    
+      playButtonOrder();
+    }
   }
+  
+  function playButtonOrder(){
+    
+    var currSound;
+    var playSpeed = 0.5;
+    
+    buttonOrder.forEach(function(btnPress){
+      //get sound and play it
+      currSound = new Audio(btnPress.sound);
+      currSound.playbackRate = playSpeed;
+      currSound.play();
+      
+      $(btnPress.buttonId).css("background-color", btnPress.color);
+      $(btnPress.buttonId).delay(1000).css("background-color", btnPress.colorHex);
+    });
+    
+  }//end of playButtonOrder
   
 });
