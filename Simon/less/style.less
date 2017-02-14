@@ -6,6 +6,7 @@
 @color-blue: #008FE8;
 @color-yellow: #FDF329;
 @color-darkred: #32050C;
+@dark-opacity: 0.5;
 @import url('https://fonts.googleapis.com/css?family=Oswald:700&subset=latin-ext');
 
 body{
@@ -15,13 +16,14 @@ body{
 #container{
   margin: 0 auto;
   position: relative;
-  width: 500px;
+  //width: 500px;
+  width: 31em;
 }
 
 #outer-circle{
   margin: 0 auto;
-  height: 500px;
-  width: 500px;
+  height: 31em;
+  width: 31em;
   background-color: @color-circle-background;
   border-radius: 100%;
   box-shadow: 0 0 20px gray;
@@ -35,6 +37,7 @@ body{
   position: absolute;
   top: @margin;
   left: @margin;
+  opacity: @dark-opacity;
 }
 
 #red-btn{
@@ -45,6 +48,7 @@ body{
   position: absolute;
   top: @margin;
   right: @margin;
+  opacity: @dark-opacity;
 }
 
 #blue-btn{
@@ -55,6 +59,7 @@ body{
   position: absolute;
   bottom: @margin;
   right: @margin;
+  opacity: @dark-opacity;
 }
 
 #yellow-btn{
@@ -65,6 +70,7 @@ body{
   position: absolute;
   bottom: @margin;
   left: @margin;
+  opacity: @dark-opacity;
 }
 
 #v-bar{
@@ -84,22 +90,22 @@ body{
 }
 
 #inner-circle{
-  height: 250px;
-  width: 250px;
+  height: 15.5em;
+  width: 15.5em;
   position: absolute;
   border-radius: 100%;
-  top: 125px;
-  left: 125px;
+  top: 7.75em;
+  left: 7.75em;
   background-color: @color-circle-background;
 }
 
 #white-circle{
-  height: 230px;
-  width: 230px;
+  height: 14.1em;
+  width: 14.1em;
   position: relative;
   border-radius: 100%;
-  top: 135px;
-  left: 135px;
+  top: 8.5em;
+  left: 8.5em;
   background-color: white;
   color: @color-circle-background;
 }

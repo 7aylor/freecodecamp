@@ -8,13 +8,13 @@ var playCount = 0;
 
 var buttons = [
   {color: 'red', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
-  buttonId: '#red-btn', colorHex: '#F92714'},
+  buttonId: '#red-btn'},
   {color: 'green', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
-  buttonId: '#green-btn', colorHex: '#3FD54F'},
+  buttonId: '#green-btn'},
   {color: 'yellow', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3',
-  buttonId: '#yellow-btn', colorHex: '#FDF329'},
+  buttonId: '#yellow-btn'},
   {color: 'blue', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3',
-  buttonId: '#blue-btn', colorHex: '#008FE8'},
+  buttonId: '#blue-btn'}
 ];
 
 var buttonOrder = [];
@@ -28,12 +28,18 @@ $(document).ready(function(){
     if(state === "off"){
       state = "on";
       $("#switch-btn").animate({left: '+=1.5em'});
+      buttons.forEach(function(btn){
+        $(btn.buttonId).css("opacity", "0.8");
+      })
       gameOn();
     }
     //if on, set state to off, animate switch to off, and call gameOff()
     else{
       state = "off";
       $("#switch-btn").animate({left: '-=1.5em'});
+      buttons.forEach(function(btn){
+        $(btn.buttonId).css("opacity", "0.5");
+      })
       gameOff();
     }
   });
@@ -63,7 +69,7 @@ $(document).ready(function(){
       playGame();
     });
     
-  }
+  }//end of gameOn
   
   //Sets the settings back to default when off
   function gameOff(){
@@ -75,11 +81,12 @@ $(document).ready(function(){
     $("#yellow-btn").css("cursor", "auto");
     $("#blue-btn").css("cursor", "auto");
     $("#strict-light-inner").css("background-color","#32050C");
-  }
+    playCount = 0;
+  }//end of gameOff
   
   function playGame(){
     var lost = false;
-    while(lost !== true && playCount <= 2){
+    while(lost !== true && playCount <= 1){
       var btnChoice = Math.floor((Math.random() * 4));
     
       //btnChoice = 0;
@@ -99,23 +106,29 @@ $(document).ready(function(){
       playCount++;
       playButtonOrder();
     }
-  }
+  }//end of playGame
   
   function playButtonOrder(){
-    
-    var currSound;
-    var playSpeed = 0.5;
-    
-    buttonOrder.forEach(function(btnPress){
-      //get sound and play it
-      currSound = new Audio(btnPress.sound);
-      currSound.playbackRate = playSpeed;
-      currSound.play();
+
+    var currItem = 0;
+    var interval;
+    //////lots of work needed here on timing
+    for(var i = 0; i < buttonOrder.length; i++){
+      var currSound = new Audio(buttonOrder[i].sound);
+        currSound.playbackRate = 0.5;
+        currSound.play();
       
-      $(btnPress.buttonId).css("background-color", btnPress.color);
-      $(btnPress.buttonId).delay(1000).css("background-color", btnPress.colorHex);
-    });
-    
+      $(buttonOrder[i].buttonId).css("opacity", "1");
+      
+      setTimeout(function(){
+        
+        $(buttonOrder[i].buttonId).css("opacity", "0.8");
+        
+      }, 1000);
+      
+    }
+
   }//end of playButtonOrder
+
   
 });
