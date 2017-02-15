@@ -6,16 +6,7 @@ var strictMode = "off";
 
 var playCount = 0;
 
-var buttons = [
-  {color: 'red', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
-  buttonId: '#red-btn'},
-  {color: 'green', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
-  buttonId: '#green-btn'},
-  {color: 'yellow', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3',
-  buttonId: '#yellow-btn'},
-  {color: 'blue', sound: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3',
-  buttonId: '#blue-btn'}
-];
+var lost = false;
 
 var buttonOrder = [];
 
@@ -28,21 +19,24 @@ $(document).ready(function(){
     if(state === "off"){
       state = "on";
       $("#switch-btn").animate({left: '+=1.5em'});
-      buttons.forEach(function(btn){
-        $(btn.buttonId).css("opacity", "0.8");
-      })
+      $("#green-btn").css("opacity", "0.75");
+      $("#red-btn").css("opacity", "0.75");
+      $("#yellow-btn").css("opacity", "0.75");
+      $("#blue-btn").css("opacity", "0.75");
       gameOn();
     }
     //if on, set state to off, animate switch to off, and call gameOff()
     else{
       state = "off";
       $("#switch-btn").animate({left: '-=1.5em'});
-      buttons.forEach(function(btn){
-        $(btn.buttonId).css("opacity", "0.5");
-      })
+      $("#green-btn").css("opacity", "0.5");
+      $("#red-btn").css("opacity", "0.5");
+      $("#yellow-btn").css("opacity", "0.5");
+      $("#blue-btn").css("opacity", "0.5");
       gameOff();
     }
   });
+  
   
   //controls flow of the game when on
   function gameOn(){
@@ -66,6 +60,7 @@ $(document).ready(function(){
     });
     
     $("#start-btn").click(function(){
+      $("#count").text("00");
       playGame();
     });
     
@@ -73,7 +68,7 @@ $(document).ready(function(){
   
   //Sets the settings back to default when off
   function gameOff(){
-    $("#count").css("color", "black").text("- -");
+    $("#count").css("color", "black").text("--");
     $("#start-btn").css("cursor", "auto");
     $("#strict-btn").css("cursor", "auto");
     $("#green-btn").css("cursor", "auto");
@@ -85,50 +80,82 @@ $(document).ready(function(){
   }//end of gameOff
   
   function playGame(){
-    var lost = false;
-    while(lost !== true && playCount <= 1){
-      var btnChoice = Math.floor((Math.random() * 4));
-    
-      //btnChoice = 0;
-      if(btnChoice === 0){
-        buttonOrder.push(buttons[0]);
-      }
-      else if(btnChoice === 1){
-        buttonOrder.push(buttons[1]);
-      }
-      else if(btnChoice === 2){
-        buttonOrder.push(buttons[2]);
-      }
-      else if(btnChoice === 3){
-        buttonOrder.push(buttons[3]);
+    (function gameLoop(numTurns){
+      computerPlay();
+      //playButtonOrder();
+      //playerPlay();
+      //checkTurn();
+      
+      if(numTurns < 20 && lost !== true){
+        gameLoop(playCount);
       }
       
-      playCount++;
-      playButtonOrder();
-    }
+    })(playCount);
+
   }//end of playGame
   
   function playButtonOrder(){
-
-    var currItem = 0;
-    var interval;
+    console.log("buttonOrder length: " + buttonOrder.length);
+    
     //////lots of work needed here on timing
-    for(var i = 0; i < buttonOrder.length; i++){
-      var currSound = new Audio(buttonOrder[i].sound);
-        currSound.playbackRate = 0.5;
-        currSound.play();
-      
-      $(buttonOrder[i].buttonId).css("opacity", "1");
-      
-      setTimeout(function(){
+      (function playButtonOrder (i) {
         
-        $(buttonOrder[i].buttonId).css("opacity", "0.8");
+        setTimeout(function (i) {
+          playSound(buttonOrder[i]);
+          if (i < buttonOrder.length) {
+            playButtonOrder(i);
+          }
+        }, 1000);
         
-      }, 1000);
-      
-    }
+      })(0);
 
   }//end of playButtonOrder
 
+  function computerPlay(){
+    var btnChoice = Math.floor((Math.random() * 4));
+
+    console.log(btnChoice);
+    if(btnChoice === 0){
+      buttonOrder.push("red");
+    }
+    else if(btnChoice === 1){
+      buttonOrder.push("green");
+    }
+    else if(btnChoice === 2){
+      buttonOrder.push("yellow");
+    }
+    else if(btnChoice === 3){
+      buttonOrder.push("blue");
+    }
+    
+    playCount++;
+    
+    if(playCount < 10){
+      $("#count").text("0" + playCount);
+    }
+    else{
+      $("#count").text(playCount);
+    }
+  }//end of computerPlay
+  
+  function playSound(btnChoice){
+    var currSound;
+
+    if(btnChoice === "red"){
+      currSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+    }
+    else if(btnChoice === "green"){
+      currSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+    }
+    else if(btnChoice === "yellow"){
+      currSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+    }
+    else if(btnChoice === "blue"){
+      currSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+    }
+    currSound.playbackRate = 0.5;
+    currSound.play();
+    currSound = null;
+  }
   
 });
